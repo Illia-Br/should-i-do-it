@@ -18,3 +18,22 @@ def create_post():
         print('Post was created')
         return redirect(url_for('core.index'))
     return render_template('create_post.html', form=form)
+
+# Make sure the blog_post_id is an integer!
+
+@posts.route('/<int:post_id>')
+def post(post_id):
+    post = Posts.query.get_or_404(post_id) 
+    return render_template('post.html', title=post.title, date=post.date, post=post)
+
+
+@posts.route('/<int:post_id>/delete',methods=['GET','POST'])
+@login_required
+def delete_post(post_id):
+    post = Posts.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Post Deleted')
+    return redirect(url_for('core.index'))
