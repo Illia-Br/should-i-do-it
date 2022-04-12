@@ -12,10 +12,20 @@
       </form>
      </div>
    {% endif %}
+     <div class="container">
+      {% for comment in post.comments %}
+      <div class="card">
+          <div class="car-boy">
+              <p>{{comment.text}}</p>
+              <p>Author: {{comment.author.username}}</p>
+              <p>Commented on: {{comment.date.strftime('%Y - %m - %d')}}</p>
+          </div>
+      </div>
+  {% endfor %}
+     </div>
    <div class="container">
     <form class="form-group" method="POST" action="{{ url_for('comments.add_comment', post_id=post.id) }}">
         {{form.hidden_tag()}}
-
         <div class="form-group">
           {{form.text.label(class="form-control-label")}}
           {{form.text(class="form-control form-control-lg")}}
