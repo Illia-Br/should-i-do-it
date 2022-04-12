@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #allows to set up isAuthenticate etc 
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy.sql import func
 
 #login management 
 # allows us to use this in templates for isUser stuff 
@@ -36,7 +37,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.DateTime(timezone=True), nullable=False, default=func.now())
     title = db.Column(db.String(160), nullable=False)
     description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -53,7 +54,7 @@ class Post(db.Model):
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.DateTime(timezone=True), nullable=False, default=func.now())
     text = db.Column(db.Text, nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
