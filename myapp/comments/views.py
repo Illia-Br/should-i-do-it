@@ -18,3 +18,25 @@ def add_comment(post_id):
         print('Comment was created')
         
     return redirect(url_for('posts.post', post_id=post_id))
+
+
+@comments.route('/<int:comment_id>/update',methods=['GET','POST'])
+@login_required
+def update(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+
+    if comment.author != current_user:
+        abort(403)
+
+    form = CommentForm()
+
+    if form.validate_on_submit():
+        comment.text = form.text.data
+        db.session.commit()
+        flash('Comment Updated')
+        return redirect(url_for('posts.post', post_id=comment.target.id))
+
+    elif request.method == 'GET':
+        form.text.data = comment.text
+
+    return render_template('update_comment.html',title='Updating',form=form)

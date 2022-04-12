@@ -4,7 +4,7 @@
   <h1>{{ post.title }}</h1>
   <h2>Written by: {{post.author.username}}</h2>
   <h3>Published: {{ post.date.strftime('%B %d, %Y') }}</h3>
-  <p>{{post.text}}</p>
+  <p>{{post.description}}</p>
    {% if post.author == current_user %}
      <div>
        <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
@@ -20,6 +20,12 @@
               <p>Author: {{comment.author.username}}</p>
               <p>Commented on: {{comment.date.strftime('%Y - %m - %d')}}</p>
           </div>
+          {% if comment.author == current_user %}
+            <div>
+              <a class="btn btn-secondary" href="{{ url_for('comments.update', comment_id=comment.id) }}">Update</a>
+              <br>
+            </div>
+          {% endif %}
       </div>
   {% endfor %}
      </div>
