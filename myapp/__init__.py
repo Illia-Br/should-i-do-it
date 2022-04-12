@@ -55,3 +55,6 @@ app.register_blueprint(users)
 
 from myapp.posts.views import posts
 app.register_blueprint(posts)
+
+from myapp.comments.views import comments
+app.register_blueprint(comments)

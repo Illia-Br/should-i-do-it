@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship('Posts', backref='author', lazy=True)
-    comments = db.relationship('Comments', backref='author', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True)
+    comments = db.relationship('Comment', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -33,14 +33,14 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"Username {self.username}"
 
-class Posts(db.Model):
+class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(160), nullable=False)
     description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    comments = db.relationship('Comments', backref='target', lazy=True)
+    comments = db.relationship('Comment', cascade = 'all,delete',backref='target', lazy=True)
 
     def __init__(self, title, description, user_id):
         self.title = title
@@ -50,7 +50,7 @@ class Posts(db.Model):
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.title}"
 
-class Comments(db.Model):
+class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
