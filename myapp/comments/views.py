@@ -34,9 +34,22 @@ def update(comment_id):
         comment.text = form.text.data
         db.session.commit()
         flash('Comment Updated')
-        return redirect(url_for('posts.post', post_id=comment.target.id))
+        return redirect(url_for('posts.post', post_id=comment.post_id))
 
     elif request.method == 'GET':
         form.text.data = comment.text
 
     return render_template('update_comment.html',title='Updating',form=form)
+
+
+@comments.route('/<int:comment_id>/deleteComment',methods=['GET','POST'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    post_id=comment.post_id
+    if comment.author != current_user:
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment Deleted')
+    return redirect(url_for('posts.post', post_id=post_id))

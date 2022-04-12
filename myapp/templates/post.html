@@ -18,12 +18,15 @@
           <div class="car-boy">
               <p>{{comment.text}}</p>
               <p>Author: {{comment.author.username}}</p>
-              <p>Commented on: {{comment.date.strftime('%Y - %m - %d')}}</p>
+              <p>Commented on {{comment.date.strftime('%B %d, %Y')}} at {{comment.date.strftime('%H:%M')}}</p>
           </div>
           {% if comment.author == current_user %}
             <div>
               <a class="btn btn-secondary" href="{{ url_for('comments.update', comment_id=comment.id) }}">Update</a>
               <br>
+              <form action="{{ url_for('comments.delete_comment', comment_id=comment.id) }}" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
             </div>
           {% endif %}
       </div>
