@@ -58,3 +58,6 @@ app.register_blueprint(posts)
 
 from myapp.comments.views import comments
 app.register_blueprint(comments)
+
+from myapp.votes.views import votes
+app.register_blueprint(votes)

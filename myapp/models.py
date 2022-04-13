@@ -74,8 +74,8 @@ class Vote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    vote_pro = db.Column(db.Integer, default = 0)
-    vote_against = db.Column(db.Integer, default = 0)
+    vote_pro = db.Column(db.Integer)
+    vote_against = db.Column(db.Integer)
 
     def __init__(self, post_id, user_id, vote_pro, vote_against):
         self.post_id = post_id
@@ -84,4 +84,4 @@ class Vote(db.Model):
         self.vote_against = vote_against
     
     def __repr__(self):
-        return f"Comment ID: {self.id} -- Vote Pro: {self.vote_pro} --- Vote Against: {self.vote_against}"
+        return f"Vote ID: {self.id} -- Vote Pro: {self.vote_pro} --- Vote Against: {self.vote_against}"

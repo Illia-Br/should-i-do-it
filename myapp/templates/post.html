@@ -13,11 +13,11 @@
      </div>
      {% else %}
      <div>
-      <form action="" method="POST">
+      <form action="{{ url_for('votes.add_vote_pro', post_id=post.id) }}" method="POST">
         <input class="btn btn-secondary" type="submit" value="Pro">
       </form>
      <div>
-      <form action="" method="POST">
+      <form action="{{ url_for('votes.add_vote_against', post_id=post.id) }}" method="POST">
         <input class="btn btn-danger" type="submit" value="Against">
       </form>
      </div>
