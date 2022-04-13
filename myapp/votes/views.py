@@ -11,7 +11,10 @@ votes = Blueprint('votes', __name__)
 def add_vote_pro(post_id):
   vote =  Vote.query.filter_by(post_id=post_id, user_id=current_user.id).first()
   if vote:
-    vote.vote_pro = 1
+    if vote.vote_pro == 1:
+      vote.vote_pro = 0
+    else:
+      vote.vote_pro = 1
     vote.vote_against = 0
     db.session.commit()
     flash('Comment Created')
@@ -31,8 +34,11 @@ def add_vote_against(post_id):
   vote =  Vote.query.filter_by(post_id=post_id, user_id=current_user.id).first()
   print(vote)
   if vote:
+    if vote.vote_against == 1:
+      vote.vote_against = 0
+    else:
+      vote.vote_against = 1
     vote.vote_pro = 0
-    vote.vote_against = 1
     db.session.commit()
     flash('Comment Created')
     print('Vote was updated to against')
