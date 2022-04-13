@@ -13,6 +13,13 @@
       </form>
      </div>
      {% else %}
+     {% if vote.vote_pro %}
+      <p>You voted pro</p>
+      {% elif vote.vote_against %}
+      <p>You voted against</p>
+      {% else %}
+      <p>You haven't voted yet</p>
+      {% endif %}
      <div>
       <form action="{{ url_for('votes.add_vote_pro', post_id=post.id) }}" method="POST">
         <input class="btn btn-secondary" type="submit" value="Pro">

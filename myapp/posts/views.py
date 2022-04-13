@@ -27,9 +27,10 @@ def post(post_id):
     form = CommentForm()
     post = Post.query.get_or_404(post_id)
     comments =  Comment.query.filter_by(target=post).order_by(Comment.date.desc())
+    vote = Vote.query.filter_by(target=post, user_id = current_user.id).first()
     pro_votes = Vote.query.filter_by(target=post, vote_pro = 1).count()
     votes_against = Vote.query.filter_by(target=post, vote_against = 1).count()
-    return render_template('post.html', title=post.title, date=post.date, post=post, form=form, comments = comments, pro_votes = pro_votes, votes_against = votes_against)
+    return render_template('post.html', title=post.title, date=post.date, post=post, form=form, comments = comments, pro_votes = pro_votes, votes_against = votes_against, vote = vote)
 
 
 @posts.route('/<int:post_id>/delete',methods=['GET','POST'])
