@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from myapp import db 
-from myapp.models import Post
+from myapp.models import Post, Comment
 from myapp.posts.forms import PostForm
 from myapp.comments.forms import CommentForm
 
@@ -25,8 +25,9 @@ def create_post():
 @posts.route('/<int:post_id>')
 def post(post_id):
     form = CommentForm()
-    post = Post.query.get_or_404(post_id) 
-    return render_template('post.html', title=post.title, date=post.date, post=post, form=form)
+    post = Post.query.get_or_404(post_id)
+    comments =  Comment.query.filter_by(target=post).order_by(Comment.date.desc())
+    return render_template('post.html', title=post.title, date=post.date, post=post, form=form, comments = comments)
 
 
 @posts.route('/<int:post_id>/delete',methods=['GET','POST'])
