@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
+    votes = db.relationship('Vote', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -42,6 +43,7 @@ class Post(db.Model):
     description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     comments = db.relationship('Comment', cascade = 'all,delete',backref='target', lazy=True)
+    votes = db.relationship('Vote', cascade = 'all,delete',backref='target', lazy=True)
 
     def __init__(self, title, description, user_id):
         self.title = title
@@ -66,3 +68,20 @@ class Comment(db.Model):
     
     def __repr__(self):
         return f"Comment ID: {self.id} -- Date: {self.date} --- Text: {self.text}"
+
+class Vote(db.Model):
+    __tablename__ = 'votes'
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    vote_pro = db.Column(db.Integer, default = 0)
+    vote_against = db.Column(db.Integer, default = 0)
+
+    def __init__(self, post_id, user_id, vote_pro, vote_against):
+        self.post_id = post_id
+        self.user_id = user_id
+        self.vote_pro = vote_pro
+        self.vote_against = vote_against
+    
+    def __repr__(self):
+        return f"Comment ID: {self.id} -- Vote Pro: {self.vote_pro} --- Vote Against: {self.vote_against}"

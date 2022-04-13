@@ -11,6 +11,16 @@
         <input class="btn btn-danger" type="submit" value="Delete">
       </form>
      </div>
+     {% else %}
+     <div>
+      <form action="" method="POST">
+        <input class="btn btn-secondary" type="submit" value="Pro">
+      </form>
+     <div>
+      <form action="" method="POST">
+        <input class="btn btn-danger" type="submit" value="Against">
+      </form>
+     </div>
    {% endif %}
    <div class="container">
     <form class="form-group" method="POST" action="{{ url_for('comments.add_comment', post_id=post.id) }}">
