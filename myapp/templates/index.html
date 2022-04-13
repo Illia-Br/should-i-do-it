@@ -11,7 +11,7 @@
                         <a class="card-title" href="{{url_for('posts.post', post_id=each_post.id)}}">{{each_post.title}}</a>
                         <a href="{{url_for('users.user_posts', username=each_post.author.username)}}">Written by: {{each_post.author.username}}</a>
                     </h2>
-                    <p>Published on: {{each_post.date.strftime('%Y - %m - %d')}}</p>
+                    <p>Published on {{each_post.date.strftime('%B %d, %Y')}}</p>
                     <a class="btn btn-primary" href="{{url_for('posts.post', post_id=each_post.id)}}">Read Post</a>
                 </div>
             </div>
