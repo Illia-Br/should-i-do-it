@@ -23,6 +23,7 @@ def create_post():
 # Make sure the blog_post_id is an integer!
 
 @posts.route('/<int:post_id>')
+@login_required
 def post(post_id):
     form = CommentForm()
     post = Post.query.get_or_404(post_id)
