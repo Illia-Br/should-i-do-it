@@ -26,7 +26,8 @@ def create_post():
 def post(post_id):
     form = CommentForm()
     post = Post.query.get_or_404(post_id)
-    comments =  Comment.query.filter_by(target=post).order_by(Comment.date.desc())
+    page = request.args.get('page', 1, type=int)
+    comments =  Comment.query.filter_by(target=post).order_by(Comment.date.desc()).paginate(page=page, per_page=5)
     vote = Vote.query.filter_by(target=post, user_id = current_user.id).first()
     pro_votes = Vote.query.filter_by(target=post, vote_pro = 1).count()
     votes_against = Vote.query.filter_by(target=post, vote_against = 1).count()
