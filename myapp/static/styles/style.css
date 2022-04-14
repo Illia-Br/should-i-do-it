@@ -252,4 +252,26 @@ h2 {
   font-size: 1.4rem;
 }
 
+.create-container {
+  background: rgba(84, 80, 80, 0.742);
+  max-width: 60%;
+  margin: 5% auto;
+  border-radius: 10px;
+  border: solid 1px darkgray;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
 
+.create-form {
+  margin: 0 auto;
+  padding-top: 3rem;
+  max-width: 80%;
+  padding-bottom: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+  font-size: 2.2rem;
+}
+
+.text-in-form {
+  font-size: 1.8rem;
+}

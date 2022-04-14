@@ -3,6 +3,6 @@ from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
+    title = StringField('Your question starts with "Should I...', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    submit = SubmitField('Post')
+    submit = SubmitField('Add Question')
