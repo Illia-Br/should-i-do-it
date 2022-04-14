@@ -187,7 +187,7 @@ h2 {
   max-width: 70%;
 }
 
-#post-main {
+.post-main {
   background: rgba(84, 80, 80, 0.742);
   max-width: 90%;
   margin: 0 auto;
@@ -285,3 +285,14 @@ h2 {
 #account {
   max-width: 50%;
 }
+
+#info {
+  margin: 7% auto 0;
+}
+
+#account-btn {
+  margin: 0 auto;
+  padding: 1rem 1.8rem;
+  font-size: 1.8rem;
+}
+
