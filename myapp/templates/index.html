@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron">
-        <h1>Posts</h1>
-    </div>
-    <div class="container">
-        {% for each_post in posts.items %}
-            <div class="card">
-                <div class="car-boy">
-                    <h2>
-                        <a class="card-title" href="{{url_for('posts.post', post_id=each_post.id)}}">{{each_post.title}}</a>
-                        <a href="{{url_for('users.user_posts', username=each_post.author.username)}}">Written by: {{each_post.author.username}}</a>
-                    </h2>
-                    <p>Published on {{each_post.date.strftime('%B %d, %Y')}}</p>
-                    <a class="btn btn-primary" href="{{url_for('posts.post', post_id=each_post.id)}}">Read Post</a>
-                </div>
+<h1>All Posts</h1>
+<main class="index-main">
+    {% for each_post in posts.items %}
+        <div class="post">
+            <img id="post-img" src="/static/styles/images/decision2.png" alt="post-img">
+            <div class="post-body">
+                <h1>
+                    "Should I {{each_post.title}}?"
+                </h1>
+                <p>Posted by <a href="{{url_for('users.user_posts', username=each_post.author.username)}}">{{each_post.author.username}}</a> on {{each_post.date.strftime('%B %d, %Y')}}</p>
+                <a class="btn-prim" href="{{url_for('posts.post', post_id=each_post.id)}}">Help {{each_post.author.username}} to Decide</a>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+    
+    </main>
 
     <nav aria-label="Page Navigation example">
         <ul class="pagination justify-content-center">
@@ -33,4 +32,5 @@
             {% endfor %}
         </ul>
     </nav>
+    
 {% endblock %}
