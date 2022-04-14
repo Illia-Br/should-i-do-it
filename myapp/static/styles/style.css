@@ -276,3 +276,12 @@ h2 {
 .text-in-form {
   font-size: 1.8rem;
 }
+
+#account-container {
+  margin: 3% auto;
+  max-width: 40%;
+}
+
+#account {
+  max-width: 50%;
+}
