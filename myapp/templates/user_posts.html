@@ -9,10 +9,7 @@
                     <h1>
                         "Should I {{each_post.title}}?"
                     </h1>
-                    <h2>
-                        {{each_post.description}}
-                    </h2>
-                    <p>Posted by <a href="{{url_for('users.user_posts', username=each_post.author.username)}}">{{each_post.author.username}}</a> on {{each_post.date.strftime('%B %d, %Y')}}</p>
+                    <p>Posted on {{each_post.date.strftime('%B %d, %Y')}}</p>
                     <a class="btn-prim" href="{{url_for('posts.post', post_id=each_post.id)}}">Post Details</a>
                 </div>
             </div>
