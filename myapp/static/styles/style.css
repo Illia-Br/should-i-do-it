@@ -19,7 +19,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-size: 1.8rem;
-  background: url('./images/background3.jpg') #424243;
+  background: url('./images/background.jpg') #424243;
   background-size: cover;
   text-align: center;
 }
@@ -87,7 +87,7 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 
-.post-body p{
+.post-body p, .page-text{
   color: #fff;
   padding-bottom: 2%;
   text-shadow: 1px 1px 1px black;
@@ -114,4 +114,26 @@ h1 {
 .btn-prim:hover {
   box-shadow: 0px 5px 1rem rgba(255, 94, 98, 0.5);
   color: white;
+}
+
+.login-form {
+  background: rgba(84, 80, 80, 0.742);
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+  font-size: 2rem;
+  max-width: 30%;
+  border: solid 1px darkgray;
+  border-radius: 10px;
+  padding: 3rem 0 2rem;
+  margin: 10% auto 0;
+}
+
+.login-form .btn-prim {
+  margin: 2% auto 4%;
+  padding: 1rem 1.8rem;
+}
+
+.field {
+  border: solid 1px rgb(24, 24, 24);
+  max-width: 70%;
 }
