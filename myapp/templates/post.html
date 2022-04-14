@@ -1,69 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron">
-  <h1>{{ post.title }}</h1>
-  <h2>Written by: {{post.author.username}}</h2>
-  <h3>Published: {{ post.date.strftime('%B %d, %Y') }}</h3>
-  <p>{{post.description}}</p>
-  <p>Voted pro: {{pro_votes}} Voted against: {{votes_against}}</p>
-   {% if post.author == current_user %}
-     <div>
-       <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
-        <input class="btn btn-danger" type="submit" value="Delete">
-      </form>
-     </div>
-     {% else %}
-     {% if vote.vote_pro %}
-      <p>You voted pro</p>
-      {% elif vote.vote_against %}
-      <p>You voted against</p>
+<main id="post-main">
+  <div id="post-container">
+    <p>On {{ post.date.strftime('%B %d, %Y') }} {{ post.author.username }} asked:</p>
+    <h1>Should I {{ post.title }}?</h1>
+    <h2>{{post.description}}</h2>
+    <p class="votes">{{pro_votes}} people think {{ post.author.username }} should do that <br> {{votes_against}} people think {{ post.author.username }} shouldn't do that</p>
+    {% if post.author == current_user %}
+      <div>
+        <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+          <input class="btn-delete" type="submit" value="Delete Post">
+        </form>
+      </div>
       {% else %}
-      <p>You haven't voted yet</p>
-      {% endif %}
-     <div>
+      {% if vote.vote_pro %}
+        <p class="votes" >You voted pro</p>
+        {% elif vote.vote_against %}
+        <p class="votes">You voted against</p>
+        {% else %}
+        <p class="votes">You haven't voted yet</p>
+        {% endif %}
+     <div class="btn-container">
       <form action="{{ url_for('votes.add_vote_pro', post_id=post.id) }}" method="POST">
         <input class="btn btn-secondary" type="submit" value="Pro">
       </form>
-     <div>
+     
       <form action="{{ url_for('votes.add_vote_against', post_id=post.id) }}" method="POST">
         <input class="btn btn-danger" type="submit" value="Against">
       </form>
      </div>
    {% endif %}
-   <div class="container">
-    <form class="form-group" method="POST" action="{{ url_for('comments.add_comment', post_id=post.id) }}">
-        {{form.hidden_tag()}}
-        <div class="form-group">
-          {{form.text.label(class="form-control-label")}}
-          {{form.text(class="form-control form-control-lg")}}
-      </div>
-      <div class="form-group">
-          {{form.submit(class="btn btn-outline-info")}}
-      </div>
-    </form>
   </div>
+   
+  <h1>Comments</h1>
+  
+    <form class="comment-form"
+    method="POST" action="{{ url_for('comments.add_comment', post_id=post.id) }}">
+        {{form.hidden_tag()}}
+          {{form.text.label(class="hidden")}}
+          {{form.text(class="text-box", placeholder="Enter your comment here...")}}<br>
+          {{form.submit(class="btn-prim")}}
+    </form>
+  
      <div class="container">
       {% for comment in comments.items %}
       <div class="card">
-          <div class="car-boy">
-              <p>{{comment.text}}</p>
-              <p>Author: {{comment.author.username}}</p>
-              <p>Commented on {{comment.date.strftime('%B %d, %Y')}} at {{comment.date.strftime('%I:%M %p')}}</p>
+          <div class="card-body">
+            <p>Commented by {{comment.author.username}} on {{comment.date.strftime('%B %d, %Y')}} at {{comment.date.strftime('%I:%M %p')}}</p>
+            <h2>{{comment.text}}</h2>
           </div>
           {% if comment.author == current_user %}
-            <div>
-              <a class="btn btn-secondary" href="{{ url_for('comments.update', comment_id=comment.id) }}">Update</a>
+            <div class="btn-container">
+              <a class="btn-update" href="{{ url_for('comments.update', comment_id=comment.id) }}">Update</a>
               <br>
               <form action="{{ url_for('comments.delete_comment', comment_id=comment.id) }}" method="POST">
-                <input class="btn btn-danger" type="submit" value="Delete">
+                <input class="btn-delete" type="submit" value="Delete">
               </form>
             </div>
           {% endif %}
       </div>
   {% endfor %}
-     </div>
+    </div>
    
-</div>
+  
 <nav aria-label="Page Navigation example">
   <ul class="pagination justify-content-center">
 
@@ -80,4 +79,5 @@
       {% endfor %}
   </ul>
 </nav>
+</main>
 {% endblock content %}

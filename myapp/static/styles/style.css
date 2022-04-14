@@ -26,7 +26,6 @@ body {
 
 
 #main-nav {
-  grid-area: nav;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -116,6 +115,44 @@ h1 {
   color: white;
 }
 
+.btn-delete {
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #ab2020, #8e090c);
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
+  transition: all .2s ease-in;
+  text-decoration: none;
+  margin-bottom: 1%;
+}
+
+.btn-delete:hover {
+  box-shadow: 0px 5px 1rem rgba(255, 94, 98, 0.5);
+  color: white;
+}
+
+.btn-update {
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #2f4db0, #1542a4);
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 1px 10px 2rem rgba(73, 86, 225, 0.5);
+  transition: all .2s ease-in;
+  text-decoration: none;
+  margin-bottom: 1%;
+}
+
+.btn-update:hover {
+  box-shadow: 0px 5px 1rem rgba(67, 81, 230, 0.5);
+  color: white;
+}
+
 .login-form {
   background: rgba(84, 80, 80, 0.742);
   color: #fff;
@@ -136,4 +173,68 @@ h1 {
 .field {
   border: solid 1px rgb(24, 24, 24);
   max-width: 70%;
+}
+
+#post-main {
+  background: rgba(84, 80, 80, 0.742);
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: solid 1px darkgray;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+#post-container {
+  margin-top: 1%;
+  border-bottom: solid 1px darkgray;
+}
+
+#post-container h2 {
+  margin-top: 2%;
+}
+
+.votes {
+  font-size: 1.6rem;
+  margin-top: 3%;
+}
+
+.hidden {
+  display: none;
+}
+
+.comment-form {
+  margin: 0 auto;
+  max-width: 70%;
+  padding-bottom: 1rem;
+}
+
+#text {
+  width: 40vw;
+  height: 8vh;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.btn-container .btn-update {
+  margin-right: 1%;
+}
+
+.card {
+  background: rgba(84, 80, 80, 0.776);
+  margin: 0 auto;
+  max-width: 60%;
+  border: solid 1px darkgray;
+}
+
+.card p{
+  font-size: 1.4rem;
+}
+
+.card .btn-delete, .card .btn-update {
+  font-size: 1.2rem;
 }
