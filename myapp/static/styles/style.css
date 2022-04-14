@@ -65,14 +65,11 @@ h2 {
 }
 
 .post {
-  display: flex;
-  flex-direction: column;
   margin: 1rem auto;
   border: solid 1px darkgray;
   border-radius: 10px;
   background: rgba(84, 80, 80, 0.742);
   max-width: 40%;
-  justify-content: center;
 }
 
 #post-img {
@@ -87,7 +84,7 @@ h2 {
 
 .post-body h1{
   color: #fff;
-  padding-bottom: 1%;
+  padding-top: 1%;
   text-shadow: 1px 1px 1px black;
 }
 
@@ -105,7 +102,7 @@ h2 {
 .post-body h2{
   color: #fff;
   text-shadow: 1px 1px 1px black;
-  padding: 6% 0;
+  padding: 4% 0;
 }
 
 .btn-prim {
@@ -203,13 +200,14 @@ h2 {
 }
 
 #post-container h2 {
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .description-container {
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 90%;
   word-wrap:break-word;
+  
 }
 
 .votes {

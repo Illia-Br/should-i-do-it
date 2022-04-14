@@ -3,8 +3,8 @@
 <main class="post-main">
   <div id="post-container">
     <p>On {{ post.date.strftime('%B %d, %Y') }} {{ post.author.username }} asked:</p>
-    <h1>Should I {{ post.title }}?</h1>
     <div class="description-container">
+    <h1>Should I {{ post.title }}?</h1>
     <h2>{{post.description}}</h2>
     </div>
     <p class="votes">{{pro_votes}} people think {{ post.author.username }} should do that <br> {{votes_against}} people think {{ post.author.username }} shouldn't do that</p>

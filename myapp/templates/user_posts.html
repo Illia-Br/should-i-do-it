@@ -6,9 +6,12 @@
             <div class="post">
                 <img id="post-img" src="/static/styles/images/decision2.png" alt="post-img">
                 <div class="post-body">
+                    <div class="description-container">
                     <h1>
                         "Should I {{each_post.title}}?"
                     </h1>
+                    <h2>{{each_post.description}}</h2>
+                    </div>
                     <p>Posted on {{each_post.date.strftime('%B %d, %Y')}}</p>
                     <a class="btn-prim" href="{{url_for('posts.post', post_id=each_post.id)}}">Post Details</a>
                 </div>
