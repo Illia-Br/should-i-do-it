@@ -49,6 +49,11 @@ body {
 h1 {
   margin: 1% 0;
   color: #fff;
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.1rem;
 }
 
 .index-main {
@@ -87,6 +92,7 @@ h1 {
 }
 
 .post-body p, .page-text{
+  font-size: 1.6rem;
   color: #fff;
   padding-bottom: 2%;
   text-shadow: 1px 1px 1px black;
@@ -94,6 +100,12 @@ h1 {
 
 .post-body p a{
   color: #fff;
+}
+
+.post-body h2{
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+  padding: 6% 0;
 }
 
 .btn-prim {
@@ -221,7 +233,12 @@ h1 {
 }
 
 .btn-container .btn-update {
-  margin-right: 1%;
+  margin-right: 8px;
+}
+
+.btn-container .btn-delete, .btn-container .btn-update {
+  font-size: 1.2rem;
+  padding: 0.6rem 1rem;
 }
 
 .card {
@@ -235,6 +252,4 @@ h1 {
   font-size: 1.4rem;
 }
 
-.card .btn-delete, .card .btn-update {
-  font-size: 1.2rem;
-}
+
