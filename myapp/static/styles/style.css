@@ -69,7 +69,7 @@ h2 {
   border: solid 1px darkgray;
   border-radius: 10px;
   background: rgba(84, 80, 80, 0.742);
-  max-width: 40%;
+  width: 35%;
 }
 
 #post-img {
@@ -80,11 +80,12 @@ h2 {
 .post-body {
   margin: 1% auto;
   padding-bottom: 1rem;
+  
 }
 
 .post-body h1{
   color: #fff;
-  padding-top: 1%;
+  padding-top: 1% ;
   text-shadow: 1px 1px 1px black;
 }
 
@@ -207,7 +208,6 @@ h2 {
   margin: 0 auto;
   max-width: 90%;
   word-wrap:break-word;
-  
 }
 
 .votes {
