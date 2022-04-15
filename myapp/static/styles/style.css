@@ -304,3 +304,46 @@ h2 {
   font-size: 1.8rem;
 }
 
+.page-item {
+  padding-top: 1rem;
+}
+
+a.page-link {
+  background-color: rgba(84, 80, 80, 0.742) !important;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+
+@media only screen and (max-width: 900px) {
+  
+  #main-nav {
+    justify-content: center;
+  }
+
+  #main-nav > a {
+    font-size: 1.6rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .post {
+    width: 70%;
+  }
+
+  .post h1{
+    font-size: 2.1rem;
+  }
+
+  .login-form, .create-form, #account-container {
+    max-width: 60%;
+    font-size: 1.6rem;
+  }  
+
+  .text-in-form {
+    font-size: 1.6rem;
+  }
+
+}

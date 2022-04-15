@@ -3,7 +3,8 @@
 
 <form class="login-form" method="POST">
     {{form.hidden_tag()}}
-    {{form.email.label}}<br>{{form.email(fieldclass="")}}<br>
+    
+    {{form.email.label}}<br>{{form.email(class="field")}}<br>
     {{form.password.label}}<br>{{form.password(class="field")}}<br>
     {{form.submit(class="btn-prim")}}
     <p class="page-text">Do not have an account? <a href="{{url_for('users.register')}}">Register</a></p>

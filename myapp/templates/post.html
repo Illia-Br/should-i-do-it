@@ -48,7 +48,7 @@
       {% for comment in comments.items %}
       <div class="card">
           <div class="card-body">
-            <p>Comment by {{comment.author.username}} on {{comment.date.strftime('%B %d, %Y')}}</p>
+            <p>Commented by {{comment.author.username}} on {{comment.date.strftime('%B %d, %Y')}}</p>
             <h2>{{comment.text}}</h2>
           </div>
           {% if comment.author == current_user %}
