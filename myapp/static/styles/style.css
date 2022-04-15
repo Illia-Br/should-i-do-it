@@ -310,10 +310,13 @@ h2 {
 
 a.page-link {
   background-color: rgba(84, 80, 80, 0.742) !important;
-  color: #fff;
+  color: #fff !important;
   text-shadow: 1px 1px 1px black;
 }
 
+a.page-link:hover {
+  background-color: rgba(184, 176, 176, 0.742) !important;
+}
 
 @media only screen and (max-width: 900px) {
   
